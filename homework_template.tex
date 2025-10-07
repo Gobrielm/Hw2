@@ -172,10 +172,47 @@
 	\item[3.] $O(log_2(n))$
 \end{enumerate}
 
-As we move on however we would like to look to this equation \[E=mc^2\]
-That's pretty interesting.
-And this equation is numbered.
-\begin{equation}
-	e=mc^2
-\end{equation}
+\section*{Problem 2}
+
+Algorithm:
+
+$i \leftarrow 1$ \\
+while houses[i] == "keep going": \\
+	\hspace*{6mm} $i *= 2$ \\
+return bsearch(i / 2, i) \\\\
+
+Runtime: \\\\
+The bounds of i will always be $2^k \leq h \leq 2^{k+1}$ where $\lfloor{log(h)}\rfloor = k$.\\
+$log(2^{k+1} -2^k) \leq log(k) + C \rightarrow O(log(h))$.\\\\
+This means the algorithm runs in $O(log(h))$ time.\\
+
+Correctness: \\
+Hypothesis: Returns the index to where houses will return "Party's here!" without making changes to houses.\\\\
+
+Base Case: $h = 1$, the alg. returns 1. \checkmark \\
+Induction Step: \\
+Assume: \\
+$\forall i < n$, it returns $i$ when $i=h$.\\
+
+\hspace*{6mm} The function considers some range $[i, 2i]$ where $i=\lfloor{log_2(h)}\rfloor$. We also know this will return the correct result as, we know $h >= i$ and $h <= 2i$. Meaning we have not throw out the correct h and do not have to consider any previous numbers.\\
+This proves that our algorithm with always find the correct $h$ according to our hypothesis.
+
+%This isn't the best, induction-wise. Maybe rework
+
+\section*{Problem 3}
+Hypothesis: Given any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece.\\
+
+Base Case:
+
+$k=1$ is a 2x2 board, with one spot missing. It can be solved trivially with one L piece.\\
+
+Assume:\\
+
+$\forall p < k$, the $2^p$ x  $2^p$, is possible to cover the entire board with L pieces.
+
+Consider: \\
+
+A $2^k$ x  $2^k$ board. We divide and conquer by going into all 4 sub-quadrant, splitting up the board into 4 equally sized sub-quadrants. We continue this until we reach all 2x2 sub-quadrants, from here, we fill the trivial sub-quadrant with a spot missing. Now we can consider this sub-quadrant to be itself a missing spot, and all other recursive calls can back out a step. From here every 2x2 grid can be treated as a 1x1 grid. This means we now have a $2^{k-1}$ x  $2^{k-1}$ grid with a single spot missing. \\
+This proves our hypothesis, since we assumed that the $k-1$ case must be true.
+
 \end{document}
