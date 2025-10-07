@@ -148,7 +148,7 @@
 
 % Edit these as appropriate
 \newcommand\course{ECS 122A}
-\newcommand\hwnumber{1}                    % <-- homework number
+\newcommand\hwnumber{2}                    % <-- homework number
 \newcommand\Namea{Gabe McKay}           % <-- Name of partner #1
 \newcommand\Nameb{Weicheng Li}           % <-- Name of partner #2
 \newcommand\Namec{Duran Suma}           % <-- Name of partner #3
@@ -214,5 +214,61 @@ Consider: \\
 
 A $2^k$ x  $2^k$ board. We divide and conquer by going into all 4 sub-quadrant, splitting up the board into 4 equally sized sub-quadrants. We continue this until we reach all 2x2 sub-quadrants, from here, we fill the trivial sub-quadrant with a spot missing. Now we can consider this sub-quadrant to be itself a missing spot, and all other recursive calls can back out a step. From here every 2x2 grid can be treated as a 1x1 grid. This means we now have a $2^{k-1}$ x  $2^{k-1}$ grid with a single spot missing. \\
 This proves our hypothesis, since we assumed that the $k-1$ case must be true.
+
+\section*{Problem 4}
+
+Algorithm:\\
+MULT(array A):
+\begin{quote}
+	$n \rightarrow A.size()$\\
+	if $(n == 1)$ return A[0]\\
+	Array B = MULT(A[0 .. $\frac{n}{2}$])\\
+	Array C = MULT(A[$\frac{n}{2} + 1$ .. $n$])\\\\
+	
+	for (i in range($\frac{n}{2}$)):
+	\begin{quote}
+		A[i] = B[i] $-C[i]$
+	\end{quote}
+	
+	for (i in range($\frac{n}{2}$)):
+	\begin{quote}
+		A[$i + \frac{n}{2}$] = $3 * B[i] + 5 * C[i]$
+	\end{quote}
+	return A
+\end{quote}
+
+Runtime: \\
+$T(n) = 2 * T(\frac{n}{2}) + c*n \rightarrow O(nlog(n))$\\
+
+Correctness:
+\begin{quote}
+Hypothesis: \\
+Given an array A, of size n, the algorithm will return the given array multiplied with the matrix of size n x n, as stated in the problem.
+
+Base Case:\\
+
+$A.size() == 1$ and it returns A[0] \checkmark \\
+
+Assume: \\
+$\forall k < A.size()$, MULT returns the "correct" matrix calculation as stated in the hypothesis.\\
+
+Now consider A. A can be broken up as so...\\
+\begin{equation}
+	E_n * A = \left(\begin{matrix}
+		E_{\frac{n}{2}} * x_1 - E_{\frac{n}{2}} * x_2\\
+		3 * E_{\frac{n}{2}} * x_1 + 5 * E_{\frac{n}{2}} * x_2
+	\end{matrix}\right) 
+\end{equation}
+where $x_1$ is the first half of A, and $x_2$ the second.
+
+Array B is $E_{\frac{n}{2}} * x_1$ and Array C is $E_{\frac{n}{2}} * x_2$, related to our algorithm.\\
+We know that B and C, must be correct as stated in our hypothesis and assumption.\\
+Therefore, when we combine them into A, following the matrix above, A is calculated.
+
+% This most likely needs some work. TODO
+
+\end{quote}
+
+\section*{Problem 5}
 
 \end{document}
