@@ -170,19 +170,15 @@
 Algorithm:\\
 MULT(array A): 
 \begin{quote}
-	$n \rightarrow A.size()$\\
+	$n \leftarrow A.size()$\\
 	if $(n == 1)$ return A[0]\\
 	Array B = MULT(A[0 .. $\frac{n}{2}$])\\
-	Array C = MULT(A[$\frac{n}{2} + 1$ .. $n$])\\\\
+	Array C = MULT(A[$\frac{n}{2} + 1$ .. $n$])\\
 	
 	for (i in range($\frac{n}{2}$)):
 	\begin{quote}
-		A[i] = B[i] $-C[i]$
-	\end{quote}
-	
-	for (i in range($\frac{n}{2}$)):
-	\begin{quote}
-		A[$i + \frac{n}{2}$] = $3 * B[i] + 5 * C[i]$
+		A[i] = B[i] $-C[i]$ \\
+		A[i + $\frac{n}{2}$] = $3 * B[i] + 5 * C[i]$
 	\end{quote}
 	return A
 \end{quote}
