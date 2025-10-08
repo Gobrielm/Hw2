@@ -186,10 +186,12 @@ findMin(matrix A):
 	
 \end{quote}
 
+% This psuedo-code is generally pretty messy, may need to change.
+
 Runtime: 
 \begin{quote}
 	$T(n) = T(n / 4) + cn$\\
-	Work done: $n + \frac{n}{4} + \frac{n}{16} + ... \rightarrow O(n)$
+	Work done: $n + \frac{n}{4} + \frac{n}{16} + ... + 1 \rightarrow O(n)$
 \end{quote}
 
 Correctness:
@@ -208,7 +210,7 @@ Correctness:
 	Otherwise, we find the smallest pt among those surveyed. From there we move to the smallest neighbor of that point which is guaranteed to be in one of the quadrants.\\
 	This action guarantees that a local minimum must exist within that quadrant. This is because we know the number cannot 'escape' because all of the edges of the quadrant are bigger so a local minimum must exist somewhere inside the quadrant.\\
 	
-	Therefore, when we recursively call into that new matrix, our original assumption proves that the recursive call must return a local minimum as that quadrant must have one. 
+	Wrap Up: Therefore, when we recursively call into that new sub-matrix, our original assumption proves that the recursive call must return a local minimum if one exists, which we one must exist.
 	
 \end{quote}
 
