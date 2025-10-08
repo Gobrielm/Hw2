@@ -166,6 +166,50 @@
 \begin{document}
 \section*{Problem 1}
 
-\b{TODO}
+\begin{enumerate}
+  \item
+  \textbf{Inductive hypothesis}: At the end of each $i^{\text{th}}$ loop, 
+  the variable $out$ became the sum of all elements of $A[1\ldots i]$.
+
+  \textbf{Base case} ($i = 0$): The induction hypothesis is trivially true.
+
+  \textbf{Induction step}: Let the variable $out_i$ be the version of the variable 
+  at the end of $i^{\text{th}}$ iteration. By the inductive hypothesis, 
+  $out_i$ became the sum of all the elements in $A[1\ldots i]$. 
+  At the end of the loop $(i+1)^{\text{th}}$, 
+  the variable $out_{i+1}$ became $out_i + A[i+1]$, 
+  which is the sum of elements in $A[1\ldots i+1]$.
+
+  \textbf{Wrap up}: When $i = n$, the inductive hypothesis implies 
+  that the returned variable $out$ became the sum of all elements in $A$.
+
+  \item
+  \textbf{Inductive hypothesis}: For every complete binary tree $T$ 
+  with height $h$ and number $x$, the function \texttt{search()} 
+  returns "yes" if the tree contains $x$, and "no" otherwise.
+
+  \textbf{Base case} ($h = 0$): The induction hypothesis is trivially true.
+
+  \textbf{Induction step}: Assuming the inductive hypothesis for a non-empty input 
+  $T_h$ with height $h$, consider $T_{h+1}$ with height $h+1$. 
+  The function starts with the root $T_{h+1}.val$.
+
+  \begin{enumerate}
+    \item $T_h$ is not empty, so $T_{h+1}$ is not empty — 
+    the function won't return "no" at the beginning.
+    \item If $T_{h+1}.val = x$, the function returns "yes".
+    \item If $T_{h+1}.val > x$, the function calls 
+    $\text{search}(T_{h+1}.l, x)$ where $\text{height}(T_{h+1}.l) = h$. 
+    By the inductive hypothesis, it returns "yes" iff 
+    $T_{h+1}.l$ contains $x$, and "no" otherwise.
+    \item If $T_{h+1}.val < x$, the function calls 
+    $\text{search}(T_{h+1}.r, x)$ where $\text{height}(T_{h+1}.r) = h$. 
+    Similarly, it returns "yes" iff $T_{h+1}.r$ contains $x$, and "no" otherwise.
+  \end{enumerate}
+
+  \textbf{Wrap up}: The inductive hypothesis matches exactly 
+  the statement we set out to prove.
+\end{enumerate}
+
 
 \end{document}
