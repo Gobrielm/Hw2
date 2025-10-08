@@ -206,7 +206,7 @@ Correctness:
 	\end{quote}
 	Now consider a n x n matrix. We first survey to check if any of those points are local minimum. If that is the case, we return the point. \checkmark \\
 	Otherwise, we find the smallest pt among those surveyed. From there we move to the smallest neighbor of that point which is guaranteed to be in one of the quadrants.\\
-	This action guarantees that a local minimum must exist within that quadrant. This is because we have seen that the number can 'escape' because all of the edges of the quadrant are bigger so a local minimum must exist somewhere inside the quadrant.\\
+	This action guarantees that a local minimum must exist within that quadrant. This is because we know the number cannot 'escape' because all of the edges of the quadrant are bigger so a local minimum must exist somewhere inside the quadrant.\\
 	
 	Therefore, when we recursively call into that new matrix, our original assumption proves that the recursive call must return a local minimum as that quadrant must have one. 
 	
