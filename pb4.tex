@@ -1,0 +1,232 @@
+\documentclass[11pt,letter]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{bbm}
+%% download this package and put it in the same directory as this file
+%\usepackage{clrscode3e}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+\usepackage{dsfont}
+\usepackage{bm}
+
+\usepackage{xcolor}
+\definecolor{green}{rgb}{0.0, 0.5, 0.0}
+\usepackage[colorlinks,citecolor=blue,linkcolor=magenta,bookmarks=true,hypertexnames=false]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+\providecommand\algorithmname{algorithm}
+\crefname{equation}{equation}{equations}
+\crefformat{equation}{(#2#1#3)}
+\crefname{lemma}{lemma}{lemmas}
+\crefname{claim}{claim}{claims}
+\crefname{theorem}{theorem}{theorems}
+\crefname{proposition}{proposition}{propositions}
+\crefname{corollary}{corollary}{corollaries}
+\crefname{claim}{claim}{claims}
+\crefname{remark}{remark}{remarks}
+\crefname{definition}{definition}{definitions}
+\crefname{fact}{fact}{facts}
+\crefname{question}{question}{questions}
+\crefname{condition}{condition}{conditions}
+\crefname{algorithm}{algorithm}{algorithms}
+\crefname{assumption}{assumption}{assumptions}
+\crefname{notation}{notation}{notation}
+\crefname{cond}{Condition}{Conditions}
+\crefname{problem}{problem}{problems}
+
+% Probability
+\renewcommand{\Pr}{\operatorname*{\mathbb{P}}}
+\newcommand{\Var}{\operatorname*{\mathrm{Var}}}
+\newcommand{\Cov}{\operatorname*{\mathrm{Cov}}}
+\newcommand{\Exp}{\operatorname*{\mathbb{E}}}
+\newcommand{\from}{\leftarrow}
+\newcommand{\negl}{\mathrm{negl}}
+
+% Asymptotics
+\newcommand{\poly}{\operatorname*{\mathrm{poly}}}
+\newcommand{\polylog}{\operatorname*{\mathrm{polylog}}}
+
+% Distributions
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\Bin}{\mathrm{Bin}}
+\newcommand{\Poi}{\mathrm{Poi}}
+\newcommand{\Unif}{\mathrm{Unif}}
+\newcommand{\Bernoulli}{\mathrm{Ber}}
+\newcommand{\Geom}{\mathrm{Geom}}
+\newcommand{\DistD}{\mathcal{D}}
+\newcommand{\DistG}{\mathcal{G}}
+\newcommand{\DTV}{d_\mathrm{TV}}
+\newcommand{\DKL}{D_\mathrm{KL}}
+\renewcommand{\DH}{d_\mathrm{H}}
+\newcommand{\DK}{d_\mathrm{K}}
+
+% Sets and other mathematical constructs
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\PSet}{\mathcal{P}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand{\argmax}{\operatorname*{\mathrm{arg\,max}}}
+\newcommand{\argmin}{\operatorname*{\mathrm{arg\,min}}}
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\2}{\{0, 1\}}
+\newcommand{\1}{\mathds{1}}
+
+% Calculus/Analysis
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\Diff}[2][]{\frac{\d#1}{\d#2}}
+\newcommand{\Grad}{\nabla}
+\newcommand{\Del}[2][]{\frac{\partial#1}{\partial#2}}
+
+% Linear algebra
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\lmin}{\lambda_{\min}}
+\newcommand{\lmax}{\lambda_{\max}}
+
+% Miscellaneous
+\newcommand{\eps}{\epsilon}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\Chi}{\cX}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+\newcommand{\new}[1]{{\color{red} #1}}
+
+% Project specific commands
+%
+
+\newcounter{nTheorems}
+
+\newtheorem{theorem}[nTheorems]{Theorem}
+\newtheorem{corollary}[nTheorems]{Corollary}
+\newtheorem{conjecture}[nTheorems]{Conjecture}
+\newtheorem{lemma}[nTheorems]{Lemma}
+\newtheorem{proposition}[nTheorems]{Proposition}
+\newtheorem{protocol}[nTheorems]{Protocol}
+\newtheorem{claim}[nTheorems]{Claim}
+\newtheorem{fact}[nTheorems]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{definition}[nTheorems]{Definition}
+\newtheorem{problem}[nTheorems]{Problem}
+\newtheorem{intuition}[nTheorems]{Intuition}
+\newtheorem{idea}[nTheorems]{Idea}
+\newtheorem{exercise}[nTheorems]{Exercise}
+\newtheorem{remark}[nTheorems]{Remark}
+
+% Edit these as appropriate
+\newcommand\course{ECS 122A}
+\newcommand\hwnumber{1}                    % <-- homework number
+\newcommand\Namea{Gabe McKay}           % <-- Name of partner #1
+\newcommand\Nameb{Weicheng Li}           % <-- Name of partner #2
+\newcommand\Namec{Duran Suma}           % <-- Name of partner #3
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\Namea\\\Nameb\\\Namec}
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{Problem 4}
+
+Algorithm:\\
+MULT(array A): 
+\begin{quote}
+	$n \rightarrow A.size()$\\
+	if $(n == 1)$ return A[0]\\
+	Array B = MULT(A[0 .. $\frac{n}{2}$])\\
+	Array C = MULT(A[$\frac{n}{2} + 1$ .. $n$])\\\\
+	
+	for (i in range($\frac{n}{2}$)):
+	\begin{quote}
+		A[i] = B[i] $-C[i]$
+	\end{quote}
+	
+	for (i in range($\frac{n}{2}$)):
+	\begin{quote}
+		A[$i + \frac{n}{2}$] = $3 * B[i] + 5 * C[i]$
+	\end{quote}
+	return A
+\end{quote}
+
+Runtime: \\
+$T(n) = 2 * T(\frac{n}{2}) + c*n \rightarrow O(nlog(n))$\\
+
+Correctness:
+\begin{quote}
+Hypothesis: \\
+Given an array A, of size n, the algorithm will return the given array multiplied with the matrix of size n x n, as stated in the problem.
+
+Base Case:\\
+
+$A.size() == 1$ and it returns A[0] \checkmark \\
+
+Assume: \\
+$\forall k < A.size()$, MULT returns the "correct" matrix calculation as stated in the hypothesis.\\
+
+Now consider the matrix MULT returns. It can be broken up as so...\\
+\begin{equation}
+	E_n * A = 
+	\left (\begin{matrix}
+		E_{\frac{n}{2}} & -E_{\frac{n}{2}}\\
+		3 * E_{\frac{n}{2}} & 5 * E_{\frac{n}{2}}\\
+	\end{matrix}\right)
+	*
+	\left (\begin{matrix}
+		x_1\\
+		x_2
+	\end{matrix}\right) =
+	\\
+	\left(\begin{matrix}
+		E_{\frac{n}{2}} * x_1 - E_{\frac{n}{2}} * x_2\\
+		3 * E_{\frac{n}{2}} * x_1 + 5 * E_{\frac{n}{2}} * x_2
+	\end{matrix}\right) 
+\end{equation}
+
+Array B is $E_{\frac{n}{2}} * x_1$ and Array C is $E_{\frac{n}{2}} * x_2$, related to our algorithm.\\
+We know that B and C, must have been correctly calculated as stated by our hypothesis and assumptions.\\
+Therefore, when we combine them, following the matrix above, the calculation is completed.
+
+% This most likely needs some work. TODO
+
+\end{quote}
+
+\end{document}

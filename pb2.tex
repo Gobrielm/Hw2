@@ -164,13 +164,6 @@
 \headsep 1.5em
 
 \begin{document}
-\section*{Problem 1}
-\textit{Here is the \textbf{Important} part of the problem.}
-\begin{enumerate}
-	\item[1.] Entry 1
-	\item[2.] Entry 2
-	\item[3.] $O(log_2(n))$
-\end{enumerate}
 
 \section*{Problem 2}
 
@@ -178,12 +171,13 @@ Algorithm:
 
 $i \leftarrow 1$ \\
 while houses[i] == "keep going": \\
-	\hspace*{6mm} $i *= 2$ \\
-return bsearch(i / 2, i) \\\\
+	\hspace*{6mm} $i = i * 2$ \\
+return bsearch($\frac{i}{2}$, i) \\\\
 
 Runtime: \\\\
-The bounds of i will always be $2^k \leq h \leq 2^{k+1}$ where $\lfloor{log(h)}\rfloor = k$.\\
-$log(2^{k+1} -2^k) \leq log(k) + C \rightarrow O(log(h))$.\\\\
+The bounds of h will always be $2^k \leq h \leq 2^{k+1}$ where $k = \lfloor{log_2(h)}\rfloor$.\\
+The range binary searched will be $(2^{k+1} -2^k)$, so the total runtime would be...\\
+$log_2(2^{k+1} -2^k) \leq log(k) + C \rightarrow O(log(h))$.\\\\
 This means the algorithm runs in $O(log(h))$ time.\\
 
 Correctness: \\
@@ -199,76 +193,5 @@ This proves that our algorithm with always find the correct $h$ according to our
 
 %This isn't the best, induction-wise. Maybe rework
 
-\section*{Problem 3}
-Hypothesis: Given any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece.\\
-
-Base Case:
-
-$k=1$ is a 2x2 board, with one spot missing. It can be solved trivially with one L piece.\\
-
-Assume:\\
-
-$\forall p < k$, the $2^p$ x  $2^p$, is possible to cover the entire board with L pieces.
-
-Consider: \\
-
-A $2^k$ x  $2^k$ board. We divide and conquer by going into all 4 sub-quadrant, splitting up the board into 4 equally sized sub-quadrants. We continue this until we reach all 2x2 sub-quadrants, from here, we fill the trivial sub-quadrant with a spot missing. Now we can consider this sub-quadrant to be itself a missing spot, and all other recursive calls can back out a step. From here every 2x2 grid can be treated as a 1x1 grid. This means we now have a $2^{k-1}$ x  $2^{k-1}$ grid with a single spot missing. \\
-This proves our hypothesis, since we assumed that the $k-1$ case must be true.
-
-\section*{Problem 4}
-
-Algorithm:\\
-MULT(array A):
-\begin{quote}
-	$n \rightarrow A.size()$\\
-	if $(n == 1)$ return A[0]\\
-	Array B = MULT(A[0 .. $\frac{n}{2}$])\\
-	Array C = MULT(A[$\frac{n}{2} + 1$ .. $n$])\\\\
-	
-	for (i in range($\frac{n}{2}$)):
-	\begin{quote}
-		A[i] = B[i] $-C[i]$
-	\end{quote}
-	
-	for (i in range($\frac{n}{2}$)):
-	\begin{quote}
-		A[$i + \frac{n}{2}$] = $3 * B[i] + 5 * C[i]$
-	\end{quote}
-	return A
-\end{quote}
-
-Runtime: \\
-$T(n) = 2 * T(\frac{n}{2}) + c*n \rightarrow O(nlog(n))$\\
-
-Correctness:
-\begin{quote}
-Hypothesis: \\
-Given an array A, of size n, the algorithm will return the given array multiplied with the matrix of size n x n, as stated in the problem.
-
-Base Case:\\
-
-$A.size() == 1$ and it returns A[0] \checkmark \\
-
-Assume: \\
-$\forall k < A.size()$, MULT returns the "correct" matrix calculation as stated in the hypothesis.\\
-
-Now consider A. A can be broken up as so...\\
-\begin{equation}
-	E_n * A = \left(\begin{matrix}
-		E_{\frac{n}{2}} * x_1 - E_{\frac{n}{2}} * x_2\\
-		3 * E_{\frac{n}{2}} * x_1 + 5 * E_{\frac{n}{2}} * x_2
-	\end{matrix}\right) 
-\end{equation}
-where $x_1$ is the first half of A, and $x_2$ the second.
-
-Array B is $E_{\frac{n}{2}} * x_1$ and Array C is $E_{\frac{n}{2}} * x_2$, related to our algorithm.\\
-We know that B and C, must be correct as stated in our hypothesis and assumption.\\
-Therefore, when we combine them into A, following the matrix above, A is calculated.
-
-% This most likely needs some work. TODO
-
-\end{quote}
-
-\section*{Problem 5}
 
 \end{document}
