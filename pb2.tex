@@ -176,6 +176,7 @@ return bsearch($\frac{i}{2}$, i) \\\\
 
 Runtime: \\\\
 The bounds of h will always be $2^k \leq h \leq 2^{k+1}$ where $k = \lfloor{log_2(h)}\rfloor$.\\
+To get to that range takes $O(log(h))$ time which to trivial to find.\\
 The range binary searched will be $(2^{k+1} -2^k)$, so the total runtime would be...\\
 $log_2(2^{k+1} -2^k) \leq k + C \rightarrow O(log(h))$.\\\\
 This means the algorithm runs in $O(log(h))$ time.\\
