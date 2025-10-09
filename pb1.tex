@@ -192,7 +192,7 @@
 
   \textbf{Induction step}: Assuming the inductive hypothesis for a non-empty input 
   $T_h$ with height $h$, consider $T_{h+1}$ with height $h+1$. 
-  The function starts with the root $T_{h+1}.val$.
+  The function starts with the root $T_{h+1}$.
 
   \begin{enumerate}
     \item $T_h$ is not empty, so $T_{h+1}$ is not empty — 
@@ -200,11 +200,11 @@
     \item If $T_{h+1}.val = x$, the function returns "yes".
     \item If $T_{h+1}.val > x$, the function calls 
     $\text{search}(T_{h+1}.l, x)$ where $\text{height}(T_{h+1}.l) = h$. 
-    By the inductive hypothesis, it returns "yes" iff 
+    By the inductive hypothesis, it returns "yes" if 
     $T_{h+1}.l$ contains $x$, and "no" otherwise.
     \item If $T_{h+1}.val < x$, the function calls 
     $\text{search}(T_{h+1}.r, x)$ where $\text{height}(T_{h+1}.r) = h$. 
-    Similarly, it returns "yes" iff $T_{h+1}.r$ contains $x$, and "no" otherwise.
+    Similarly, it returns "yes" if $T_{h+1}.r$ contains $x$, and "no" otherwise.
   \end{enumerate}
 
   \textbf{Wrap up}: The inductive hypothesis matches exactly 
