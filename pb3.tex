@@ -166,19 +166,21 @@
 \begin{document}
 
 \section*{Problem 3}
-Hypothesis: Given any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece without having any two tiles overlap or go outside of the board.\\
+\textbf{Inductive hypothesis}: 
 
-Base Case:
+Given any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece.\\
+
+\textbf{Base Case}:
 
 $k=1$ is a 2x2 board, with one spot missing. It can be solved trivially with one L piece.\\
 
-Assume:
+\textbf{Inductive step}:
 
-$\forall p < k$, the $2^p$ x  $2^p$ board, is possible to cover the entire board with L pieces.
+Assume  the inductive hypothesis is true for some case when $k \geq 1$. We have a board with dimension of $2^{k+1} $ x $ 2^{k+1}$ which is $2*2^{k} $ x $ 2*2^{k}= 4 * 2^{k} $ x $ 2^{k}$ so that in this case the board with dimension of $2^{k+1} $ x $ 2^{k+1}$ could be considered as a combination of four $2^k$ x  $2^k$ boards and by out inductive hypothesis implies $2^k$ x  $2^k$  can be filled by placing some rotated version of L pieces so in the case of $2^{k+1} $ x $ 2^{k+1}$ dimension board conforms to our inductive hypothesis.
 
-Consider: \\
+\textbf{wrap up}: 
 
-A $2^k$ x  $2^k$ board. We divide and conquer by going into all 4 sub-quadrants, splitting up the board into 4 equally sized sub-quadrants. We continue this until we reach all 2x2 sub-quadrants, from here, we fill the trivial sub-quadrant with a spot missing. Now we can consider this sub-quadrant to be itself a missing spot, and all other recursive calls can back out a step. From here every 2x2 grid can be treated as a 1x1 grid. This means we now have a $2^{k-1}$ x  $2^{k-1}$ grid with a single spot missing. \\
-Wrap Up: This proves our hypothesis, since we assumed that a board of size $k-1$ x $k-1$ must follow our hypothesis.
+By the steps above, we have proved that when $k \in\ \mathbb{Z} \land k \geq 1$ any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece.\\
+
 
 \end{document}
