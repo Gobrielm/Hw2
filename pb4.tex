@@ -189,7 +189,7 @@ $T(n) = 2 * T(\frac{n}{2}) + c*n \rightarrow O(nlog(n))$\\
 Correctness:
 \begin{quote}
 Hypothesis: \\
-Given an array A, of size n, the algorithm will return the given array multiplied with the matrix of size n x n, as stated in the problem.
+Given an array A, of size $2^k$ or n, the algorithm will return the given array multiplied with the matrix $E_{2^k}$, of size n x n, where $n = 2^k$.
 
 Base Case:\\
 
