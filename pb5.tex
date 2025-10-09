@@ -206,8 +206,9 @@ Correctness:
 	\begin{quote}
 		$\forall k < n$, our algorithm outputs a local minimum for a k x k matrix while following the hypothesis.\\
 	\end{quote}
-	Now consider a n x n matrix. We first survey to check if any of those points are local minimum. If that is the case, we return the point. \checkmark \\
-	Otherwise, we find the smallest pt among those surveyed. From there we move to the smallest neighbor of that point which is guaranteed to be in one of the quadrants.\\
+	Now consider a n x n matrix. We first survey the center rows and columns to check if any of those points are a local minimum. If that is the case, we return the point. \checkmark \\
+	Otherwise, we take the smallest point among those surveyed and move to its smallest neighbor. That point must be in one of the quadrants. That's because the original smallest point is the smallest among the rows and columns surveyed.\\
+	Additionally, if the smallest point had no where to go that was smaller, it would then be a local minimum, which we should have already returned.\\
 	This action guarantees that a local minimum must exist within that quadrant. This is because we know the number cannot 'escape' because all of the edges of the quadrant are bigger so a local minimum must exist somewhere inside the quadrant.\\
 	
 	Wrap Up: Therefore, when we recursively call into that new sub-matrix, our original assumption proves that the recursive call must return a local minimum if one exists, which we one must exist.
