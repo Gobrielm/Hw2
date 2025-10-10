@@ -164,23 +164,20 @@
 \headsep 1.5em
 
 \begin{document}
-
-\section*{Problem 3}
-\textbf{Inductive hypothesis}: 
-
-Given any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece.\\
-
-\textbf{Base Case}:
-
-$k=1$ is a 2x2 board, with one spot missing. It can be solved trivially with one L piece.\\
-
-\textbf{Inductive step}:
-
-Assume  the inductive hypothesis is true for some case when $k \geq 1$. We have a board with dimension of $2^{k+1} $ x $ 2^{k+1}$ which is $2*2^{k} $ x $ 2*2^{k}= 4 * 2^{k} $ x $ 2^{k}$ so that in this case the board with dimension of $2^{k+1} $ x $ 2^{k+1}$ could be considered as a combination of four $2^k$ x  $2^k$ boards and by out inductive hypothesis implies $2^k$ x  $2^k$  can be filled by placing some rotated version of L pieces so in the case of $2^{k+1} $ x $ 2^{k+1}$ dimension board conforms to our inductive hypothesis.
-
-\textbf{wrap up}: 
-
-By the steps above, we have proved that when $k \in\ \mathbb{Z} \land k \geq 1$ any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece.\\
-
-
+	
+	\section*{Problem 3}
+	Hypothesis: Given any board, $2^k$ x  $2^k$, with one tile missing/already filled. Every tile can be filled by placing some rotated version of an L piece without having any two tiles overlap or go outside of the board.\\
+	
+	Base Case:
+	
+	$k=1$ is a 2x2 board, with one spot missing. It can be solved trivially with one L piece.\\
+	
+	Assume:
+	
+	$\forall p < k$, the $2^p$ x  $2^p$ board, is possible to cover the entire board with L pieces.\\
+	
+	Consider a $2^k$ x  $2^k$ board. We divide and conquer and split up the board into 4 sub-quadrants. One of the sub-quadrants has a filled piece in it, so it can be completed following our assumption. The other 3 do not have any filled spots, but that can be fixed by placing a L piece that intersects through all of them. This adds a filled spot to each board guaranteeing we can fill those other boards following our assumption.\\
+	
+	Wrap Up: This proves our hypothesis, and therefore means any board of any size bigger than 1 can be tiled with L pieces.
+	
 \end{document}
