@@ -176,7 +176,7 @@
 	
 	$\forall p < k$, the $2^p$ x  $2^p$ board, is possible to cover the entire board with L pieces.\\
 	
-	Consider a $2^k$ x  $2^k$ board. We divide and conquer and split up the board into 4 sub-quadrants. One of the sub-quadrants has a filled piece in it, so it can be completed following our assumption. The other 3 do not have any filled spots, but that can be fixed by placing a L piece that intersects through all of them. This adds a filled spot to each board guaranteeing we can fill those other boards following our assumption.\\
+	Consider a $2^k$ x  $2^k$ board. We divide and conquer and split up the board into 4 sub-quadrants. Each sub-quadrant is of size $2^{k-1}$ x $2^{k-1}$, which is the size of the last board. One of the sub-quadrants has a filled piece in it, so it can be completed following our assumption. The other 3 do not have any filled spots, but that can be fixed by placing a L piece that intersects through all of them. This adds a filled spot to each board guaranteeing we can fill those other boards following our assumption.\\
 	
 	Wrap Up: This proves our hypothesis, and therefore means any board of any size bigger than 1 can be tiled with L pieces.
 	
